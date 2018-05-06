@@ -11,23 +11,14 @@ public class Player extends Entity{
 
     public boolean outOfBounds;
 
-    Sprite s;
 
     public Player() {
-        super();
-        super.x = 5;
-        super.y = 5;
-        s = Sprite.loadSprite("res//bird.jpg");
+        super(5,5,Sprite.loadSprite("res//bird.jpg"));
         outOfBounds = false;
     }
 
     public Sprite getSprite(){
-        return s;
-    }
-
-    @Override
-    public Render render() {
-        return new Render(s.getBi(),super.x,super.y);
+        return super.s;
     }
 
     @Override
@@ -42,8 +33,4 @@ public class Player extends Entity{
         };
     }
 
-    @Override
-    public Rectangle clickBox() {
-        return new Rectangle(super.x,super.y,32,32);
-    }
 }

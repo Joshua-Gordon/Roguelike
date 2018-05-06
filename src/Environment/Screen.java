@@ -19,7 +19,7 @@ public class Screen implements GameObject{
         GrassFactory gf = new GrassFactory();
         for(int x = 0; x < 48; ++x) {
             for(int y = 0; y < 33; ++y) {
-                grassTiles[x][y] = new Tile(gf.grass(),x*32,y*32);
+                grassTiles[x][y] = new Tile(gf.grass(),x*32,y*32,false);
             }
         }
         return new Screen(grassTiles);

@@ -1,27 +1,34 @@
 package Environment;
 
+import Control.Clickable;
 import Graphics.GameObject;
 import Graphics.Render;
 import Sprites.Sprite;
 import Entity.Entity;
+import Test.Game;
 
-public class Tile implements GameObject{
+import java.awt.*;
+import java.util.function.Consumer;
 
-    int x,y; //Grid indices
+public class Tile implements GameObject, Clickable {
+
+    int x,y; //Pixels
     Sprite s;
     String info;
 
-    Entity e;
+    boolean blocking;
 
-    public Tile(Sprite s, int x, int y) {
+    public Tile(Sprite s, int x, int y, boolean b) {
         this.s = s;
         this.x = x;
         this.y = y;
+        this.blocking = b;
         info = "A tile. Very generic, in an ad-hoc sort of way.";
     }
 
     @Override
     public Render render() {
+        //System.out.println("Tile rendering at: (" +x+","+y+")");
         return new Render(s.getBi(),x,y);
     }
 
@@ -55,12 +62,14 @@ public class Tile implements GameObject{
         info = t;
     }
 
-    public void setEntity(Entity ent) {
-        e = ent;
+
+    @Override
+    public Consumer<Integer> onClick() {
+        return e-> Game.addText(info);
     }
 
-    public Entity getEntity() {
-        return e;
+    @Override
+    public Rectangle clickBox() {
+        return new Rectangle(x,y,32,32);
     }
-
 }

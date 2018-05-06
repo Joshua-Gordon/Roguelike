@@ -1,4 +1,4 @@
-m/aterial
+material
 :name Rock
 :desc It's a rock
 :weight 3.6

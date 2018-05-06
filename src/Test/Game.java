@@ -51,6 +51,11 @@ public class Game {
 
         entities = new LinkedList<>();
 
+
+        map = Map.parseMap(Sprite.loadSprite("res//map1.png").getBi());
+        Screen s = map.screens[0][0];
+        currentScreen = s;
+
         p = new Player();
 
         i = new Inventory(50);
@@ -58,16 +63,11 @@ public class Game {
         renderer.insert(p);
         entities.add(p);
 
-
-        map = Map.parseMap(Sprite.loadSprite("res//map1.png").getBi());
-        Screen s = map.screens[0][0];
         screenX = screenY = 0;
         renderer.setScreen(s);
         gp = new Gameplay();
         renderer.setMenu(gp);
-        currentScreen = s;
 
-        currentScreen.getTiles()[p.X()][p.Y()].setEntity(p);
     }
 
     public void start() {

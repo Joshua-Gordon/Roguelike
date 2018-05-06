@@ -34,16 +34,16 @@ public class Keyboard implements KeyListener {
         if(Game.STATE==0) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_W:
-                    Game.p.move(0, -32);
+                    Game.p.move(0, -1);
                     break;
                 case KeyEvent.VK_A:
-                    Game.p.move(-32, 0);
+                    Game.p.move(-1, 0);
                     break;
                 case KeyEvent.VK_S:
-                    Game.p.move(0, 32);
+                    Game.p.move(0, 1);
                     break;
                 case KeyEvent.VK_D:
-                    Game.p.move(32, 0);
+                    Game.p.move(1, 0);
                     break;
             }
         }

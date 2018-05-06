@@ -6,19 +6,31 @@ import Environment.Screen;
 import Environment.Tile;
 import Graphics.GameObject;
 import Graphics.Render;
+import Sprites.Sprite;
 import Test.Game;
+
+import java.awt.*;
 
 public abstract class Entity implements GameObject, Clickable {
     int x, y;
+    Sprite s;
+    Tile t;
+
+    public Entity(int x, int y, Sprite s){
+        this.x = x;
+        this.y = y;
+        this.s = s;
+        this.t = Game.currentScreen.getTiles()[x][y];
+    }
 
     @Override
     public int X() {
-        return x;
+        return t.X();
     }
 
     @Override
     public int Y() {
-        return y;
+        return t.Y();
     }
 
     @Override
@@ -27,7 +39,26 @@ public abstract class Entity implements GameObject, Clickable {
     }
 
     public void move(int dx, int dy) {
-        x+=dx;y+=dy;
+        x= (x+dx);
+        y= (y+dy);
+        try {
+            this.t = Game.currentScreen.getTiles()[x][y];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            if(x+dx<0){
+                Game.getRenderer().setScreen(Game.map.screens[--Game.screenX][Game.screenY]);
+            }
+            else if(y+dy<0){
+                Game.getRenderer().setScreen(Game.map.screens[Game.screenX][--Game.screenY]);
+            } else if(x+dx>47){
+                Game.getRenderer().setScreen(Game.map.screens[++Game.screenX][Game.screenY]);
+            }
+            else if(y+dy>33){
+                Game.getRenderer().setScreen(Game.map.screens[Game.screenX][++Game.screenY]);
+            }
+            x= (x+47) % 47;
+            y= (y+33) % 33;
+            this.t = Game.currentScreen.getTiles()[x][y];
+        }
         /*if(x+dx<0){
             x+=dx;
         }
@@ -63,10 +94,18 @@ public abstract class Entity implements GameObject, Clickable {
         }*/
     }
 
-    private boolean checkOccupied(int xCoord, int yCoord) {
-        if(xCoord < 0 || yCoord < 0 || xCoord >= 48 || yCoord >= 33) {
-            return false;
-        }
-        return !(Game.currentScreen.getTiles()[xCoord][yCoord].getEntity() instanceof Collidable);
+    public void moveTo(Tile t) {
+        this.x = t.X();
+        this.y = t.Y();
+        this.t = t;
+    }
+
+    public Render render() {
+        return new Render(s.getBi(),t.X(),t.Y());
+    }
+
+    @Override
+    public Rectangle clickBox() {
+        return t.clickBox();
     }
 }

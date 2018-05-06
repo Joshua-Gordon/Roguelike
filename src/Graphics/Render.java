@@ -11,5 +11,5 @@ public class Render {
     }
 
     public BufferedImage image;
-    int x,y;
+    public int x,y;
 }

@@ -9,9 +9,16 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 public abstract class Item extends Entity{
+
+
+
     String name, description;
     double weight;
     Sprite sprite;
+
+    public Item(int x, int y, Sprite s) {
+        super(x, y, s);
+    }
 
     @Override
     public Consumer<Integer> onClick() {
@@ -35,6 +42,6 @@ public abstract class Item extends Entity{
     public void update(){}
 
     public void setPosition(int x, int y) {
-        super.move(x-super.X(),y-super.Y());
+
     }
 }
