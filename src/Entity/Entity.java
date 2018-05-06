@@ -46,17 +46,21 @@ public abstract class Entity implements GameObject, Clickable {
         } catch (ArrayIndexOutOfBoundsException e) {
             if(x+dx<0){
                 Game.getRenderer().setScreen(Game.map.screens[--Game.screenX][Game.screenY]);
+                x = 47;
             }
             else if(y+dy<0){
                 Game.getRenderer().setScreen(Game.map.screens[Game.screenX][--Game.screenY]);
+                y = 33;
             } else if(x+dx>47){
                 Game.getRenderer().setScreen(Game.map.screens[++Game.screenX][Game.screenY]);
+                x = 0;
             }
             else if(y+dy>33){
                 Game.getRenderer().setScreen(Game.map.screens[Game.screenX][++Game.screenY]);
+                y = 0;
             }
-            x= (x+47) % 47;
-            y= (y+33) % 33;
+            //x= (x+47) % 47;
+            //y= (y+33) % 33;
             this.t = Game.currentScreen.getTiles()[x][y];
         }
         /*if(x+dx<0){

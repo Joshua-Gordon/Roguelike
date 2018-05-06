@@ -52,8 +52,8 @@ public class Inventory extends Menu { //Singleton
         g.setColor(Color.BLUE);
         g.fillRect(0,0,100,80);
         g.fillRect(120,0,100,80);
-        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
         g.setColor(Color.BLACK);
+        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
         g.drawString("Exit",0,0); //TODO: Make this work
         g.drawString("Use Item",120,0);
         for(int y = 0; y < numRows; ++y) {
