@@ -28,7 +28,7 @@ public class Tile implements GameObject, Clickable {
 
     @Override
     public Render render() {
-        //System.out.println("Tile rendering at: (" +x+","+y+")");
+
         return new Render(s.getBi(),x,y);
     }
 
@@ -66,7 +66,6 @@ public class Tile implements GameObject, Clickable {
     @Override
     public Consumer<Integer> onClick() {
         return e-> {
-            System.out.println("Tile clicked at " + X() + "," + Y());
             Game.addText(info);
         };
     }
@@ -74,5 +73,9 @@ public class Tile implements GameObject, Clickable {
     @Override
     public Rectangle clickBox() {
         return new Rectangle(x,y,32,32);
+    }
+
+    public boolean isBlocking() {
+        return blocking;
     }
 }

@@ -6,6 +6,7 @@ import Entity.Item.ItemLoader;
 import Entity.Player;
 import Environment.Map;
 import Environment.Screen;
+import Environment.Tile;
 import Graphics.InfoBoxRenderer;
 import Graphics.Renderer;
 import Graphics.Window;
@@ -55,6 +56,7 @@ public class Game {
         map = Map.parseMap(Sprite.loadSprite("res//map1.png").getBi());
         Screen s = map.screens[0][0];
         currentScreen = s;
+
 
         p = new Player();
 

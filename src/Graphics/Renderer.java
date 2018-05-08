@@ -96,6 +96,7 @@ public class Renderer {
     public InfoBoxRenderer getInfoBox(){return infoBox;}
 
     public void setScreen(Screen ss) {
+        Game.currentScreen = ss;
         this.s = ss;
     }
 

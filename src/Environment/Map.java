@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 public class Map {
 
     public Screen[][] screens;
-    String title;
 
     public Map(Screen[][] screens) {
         this.screens = screens;

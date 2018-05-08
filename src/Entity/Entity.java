@@ -42,7 +42,11 @@ public abstract class Entity implements GameObject, Clickable {
         x= (x+dx);
         y= (y+dy);
         try {
+
             this.t = Game.currentScreen.getTiles()[x][y];
+            if(t.isBlocking()) {
+                throw new NullPointerException();
+            }
         } catch (ArrayIndexOutOfBoundsException e) {
             if(x+dx<0){
                 Game.getRenderer().setScreen(Game.map.screens[--Game.screenX][Game.screenY]);
@@ -59,10 +63,25 @@ public abstract class Entity implements GameObject, Clickable {
                 Game.getRenderer().setScreen(Game.map.screens[Game.screenX][++Game.screenY]);
                 y = 0;
             }
+            /*//DEBUG
+            for(int y = 0; y < Game.currentScreen.getTiles()[0].length; ++y) {
+                for(int x = 0; x < Game.currentScreen.getTiles().length; ++x) {
+                    System.out.println(Game.currentScreen.getTiles()[x][y].isBlocking() ? "Blocking" : "Non blocking");
+                }
+            }
+            *///END DEBUG
             //x= (x+47) % 47;
             //y= (y+33) % 33;
-            this.t = Game.currentScreen.getTiles()[x][y];
+            Tile tNew = Game.currentScreen.getTiles()[x][y];
+            if(tNew.isBlocking()) {
+                move(-dx,-dy);
+            } else {
+                this.t = tNew;
+            }
+        } catch (NullPointerException e) {
+            move(-dx,-dy);
         }
+
         /*if(x+dx<0){
             x+=dx;
         }
