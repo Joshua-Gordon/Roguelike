@@ -2,9 +2,12 @@ package Graphics;
 
 import Entity.Player;
 import Environment.Screen;
+import Environment.Tile;
 import Test.Game;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 import Menu.Menu;

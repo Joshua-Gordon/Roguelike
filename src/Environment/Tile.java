@@ -65,7 +65,10 @@ public class Tile implements GameObject, Clickable {
 
     @Override
     public Consumer<Integer> onClick() {
-        return e-> Game.addText(info);
+        return e-> {
+            System.out.println("Tile clicked at " + X() + "," + Y());
+            Game.addText(info);
+        };
     }
 
     @Override

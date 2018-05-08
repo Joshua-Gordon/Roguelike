@@ -27,7 +27,7 @@ public class InfoBoxRenderer {
         g.setColor(Color.WHITE);
         g.fillRect(x,0,w,Game.HEIGHT);
         g.setColor(Color.BLACK);
-        g.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,30));
+        g.setFont(new Font(Font.MONOSPACED,Font.PLAIN,30));
         int i = 0;
         for(String s : text) {
             g.drawString(">"+s,x,35*(i++));

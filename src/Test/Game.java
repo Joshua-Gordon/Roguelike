@@ -106,7 +106,13 @@ public class Game {
     }
 
     public static void addText(String text) {
-        ibr.addText(text);
+        while(text.length() >= 20) {
+            String temp = text.substring(0,20);
+            ibr.addText(temp);
+            text = text.substring(20);
+        }
+        if(text.length() > 0)
+            ibr.addText(text);
     }
 
     public static Renderer getRenderer() {

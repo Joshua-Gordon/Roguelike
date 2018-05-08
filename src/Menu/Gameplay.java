@@ -1,8 +1,11 @@
 package Menu;
 
 import Control.Clickable;
+import Environment.Tile;
+import Graphics.Window;
 import Test.Game;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Gameplay extends Menu{
@@ -14,6 +17,9 @@ public class Gameplay extends Menu{
         super.renderFunction = Game.getRenderer().normalBehaviour;
         clickables = new LinkedList<>();
         clickables.addAll(Game.getEntities());
+        for(Tile[] ts : Game.currentScreen.getTiles()) {
+            clickables.addAll(Arrays.asList(ts));
+        }
         super.state = 0;
     }
 
