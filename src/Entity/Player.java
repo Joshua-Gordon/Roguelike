@@ -13,7 +13,7 @@ public class Player extends Entity{
 
 
     public Player() {
-        super(5,5,Sprite.loadSprite("res//bird.jpg"));
+        super(5,5,Sprite.loadSprite("res//bird.jpg"),Game.currentScreen);
         outOfBounds = false;
     }
 

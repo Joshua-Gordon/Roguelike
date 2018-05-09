@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 
 public class Inventory extends Menu { //Singleton
 
-    static LinkedList<Item> items;
+    public static LinkedList<Item> items;
     static double carryCapacity;
     static boolean usingItem;
     static int numRows, numCols;
@@ -85,6 +85,7 @@ public class Inventory extends Menu { //Singleton
     };
 
     public static void addItem(Item i) {
+
         Tile nextBox = boxes[items.size()%numCols][items.size()/numRows];
         items.add(i);
         clickables.add(i);

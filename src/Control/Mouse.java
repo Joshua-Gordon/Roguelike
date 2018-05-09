@@ -26,7 +26,7 @@ public class Mouse implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e.getLocationOnScreen());
+        //System.out.println(e.getLocationOnScreen());
         for(Clickable c : clickables) {
             if(c.clickBox().contains(e.getLocationOnScreen())) {
                 if(Game.STATE == 2) {

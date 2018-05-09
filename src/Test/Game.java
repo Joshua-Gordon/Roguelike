@@ -4,9 +4,9 @@ import Entity.Entity;
 import Entity.Item.Item;
 import Entity.Item.ItemLoader;
 import Entity.Player;
+import Entity.NPC;
 import Environment.Map;
 import Environment.Screen;
-import Environment.Tile;
 import Graphics.InfoBoxRenderer;
 import Graphics.Renderer;
 import Graphics.Window;
@@ -65,10 +65,17 @@ public class Game {
         renderer.insert(p);
         entities.add(p);
 
+        NPC bobert = new NPC("bobert", 12, 14, Sprite.loadSprite("res//bobert.png"),currentScreen);
+        renderer.insert(bobert);
+        entities.add(bobert);
+
         screenX = screenY = 0;
         renderer.setScreen(s);
         gp = new Gameplay();
         renderer.setMenu(gp);
+
+
+
 
     }
 
@@ -104,6 +111,7 @@ public class Game {
     }
 
     public static void inventory() {
+        Inventory.items.forEach(i->i.setScreen(currentScreen));
         renderer.setMenu(i);
     }
 
@@ -123,6 +131,15 @@ public class Game {
 
     public static LinkedList<Entity> getEntities() {
         return entities;
+    }
+
+    public static double distanceToPlayer(Entity e) {
+        System.out.println("Player x: " + p.X());
+        System.out.println("Player y: " + p.Y());
+        System.out.println("Bobert x: " + e.X());
+        System.out.println("Bobert y: " + e.Y());
+
+        return Math.sqrt(Math.pow(p.X()-e.X(),2) + Math.pow(p.Y() - e.Y(),2));
     }
 
 }

@@ -1,6 +1,7 @@
 package Entity.Item;
 
 import Entity.Entity;
+import Environment.Screen;
 import Sprites.Sprite;
 import Graphics.Render;
 import Test.Game;
@@ -16,8 +17,8 @@ public abstract class Item extends Entity{
     double weight;
     Sprite sprite;
 
-    public Item(int x, int y, Sprite s) {
-        super(x, y, s);
+    public Item(int x, int y, Sprite s, Screen sc) {
+        super(x, y, s, sc);
     }
 
     @Override
