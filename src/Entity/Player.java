@@ -1,5 +1,7 @@
 package Entity;
 
+import Entity.Stats.Statistical;
+import Entity.Stats.Stats;
 import Environment.Tile;
 import Graphics.Render;
 import Sprites.Sprite;
@@ -8,14 +10,15 @@ import Test.Game;
 import java.awt.*;
 import java.util.function.Consumer;
 
-public class Player extends Entity{
+public class Player extends Entity implements Statistical {
 
     public boolean outOfBounds;
-
+    Stats stats;
 
     public Player() {
         super(5,5,Sprite.loadSprite("res//bird.jpg"),Game.currentScreen);
         outOfBounds = false;
+        stats = Stats.defaultStats();
     }
 
     public Sprite getSprite(){
@@ -71,6 +74,11 @@ public class Player extends Entity{
         }
         this.sc = Game.currentScreen;
         Game.getRenderer().update();
+    }
+
+    @Override
+    public Stats getStats() {
+        return stats;
     }
 
 }
