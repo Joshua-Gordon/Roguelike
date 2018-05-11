@@ -77,6 +77,10 @@ public abstract class Entity implements GameObject, Clickable {
         this.sc = Game.currentScreen;
     }
 
+    public void rotate(boolean positive) {
+        s.rotate(positive);
+    }
+
     public void moveTo(Tile t) {
         this.x = t.X();
         this.y = t.Y();

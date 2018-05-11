@@ -1,5 +1,6 @@
 package Entity;
 
+import Entity.AI.AI;
 import Environment.Screen;
 import Sprites.Sprite;
 import Test.Game;
@@ -9,10 +10,12 @@ import java.util.function.Consumer;
 public class NPC extends Entity {
 
     String name;
+    AI ai;
 
     public NPC(String name, int x, int y, Sprite s, Screen sc) {
         super(x,y,s,sc);
         this.name = name;
+        this.ai = new AI();
     }
 
     @Override
@@ -27,7 +30,6 @@ public class NPC extends Entity {
 
     @Override
     public void update() {
-        //System.out.println("AAAAAAAAAA");
-        super.s.rotate(true);
+        ai.act(this);
     }
 }
