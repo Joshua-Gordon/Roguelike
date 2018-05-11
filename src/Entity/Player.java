@@ -1,5 +1,6 @@
 package Entity;
 
+import Environment.Tile;
 import Graphics.Render;
 import Sprites.Sprite;
 import Test.Game;
@@ -31,6 +32,45 @@ public class Player extends Entity{
         return e->{
             Game.addText("That's you!");
         };
+    }
+
+    @Override
+    public void move(int dx, int dy) {
+        x= (x+dx);
+        y= (y+dy);
+        try {
+
+            this.t = Game.currentScreen.getTiles()[x][y];
+            if(t.isBlocking()) {
+                throw new NullPointerException();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            if(x+dx<0){
+                Game.getRenderer().setScreen(Game.map.screens[--Game.screenX][Game.screenY]);
+                x = 47;
+            }
+            else if(y+dy<0){
+                Game.getRenderer().setScreen(Game.map.screens[Game.screenX][--Game.screenY]);
+                y = 33;
+            } else if(x+dx>47){
+                Game.getRenderer().setScreen(Game.map.screens[++Game.screenX][Game.screenY]);
+                x = 0;
+            }
+            else if(y+dy>33){
+                Game.getRenderer().setScreen(Game.map.screens[Game.screenX][++Game.screenY]);
+                y = 0;
+            }
+            Tile tNew = Game.currentScreen.getTiles()[x][y];
+            if(tNew.isBlocking()) {
+                move(-dx,-dy);
+            } else {
+                this.t = tNew;
+            }
+        } catch (NullPointerException e) {
+            move(-dx,-dy);
+        }
+        this.sc = Game.currentScreen;
+        Game.getRenderer().update();
     }
 
 }

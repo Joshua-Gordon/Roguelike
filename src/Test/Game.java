@@ -90,7 +90,7 @@ public class Game {
 
         while(true) {
             renderer.render();
-            renderer.update();
+            //renderer.update();
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

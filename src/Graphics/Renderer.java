@@ -62,7 +62,7 @@ public class Renderer {
             go.update();
         }
         Player p = Game.p;
-        try {
+        /*try {
 
             boolean t = true;
             if (p.X() < 0 && !p.outOfBounds) {
@@ -88,7 +88,7 @@ public class Renderer {
         } finally {
             p.outOfBounds = (p.X() < 0) || (p.X() > Game.WIDTH*.8) || (p.Y() < 0) || (p.Y() > Game.HEIGHT);
             //Did the correction work?
-        }
+        }*/
     }
 
     public InfoBoxRenderer getInfoBox(){return infoBox;}
