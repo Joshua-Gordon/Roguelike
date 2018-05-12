@@ -50,6 +50,10 @@ public class Renderer {
         gos.add(idx,goNew);
     }
 
+    public void remove(GameObject old) {
+        gos.remove(old);
+    }
+
     public void render() {
 
         renderFunction.accept(renderImage);
@@ -61,34 +65,6 @@ public class Renderer {
         for(GameObject go : gos) {
             go.update();
         }
-        Player p = Game.p;
-        /*try {
-
-            boolean t = true;
-            if (p.X() < 0 && !p.outOfBounds) {
-                s=Game.map.screens[--Game.screenX][Game.screenY];
-                Game.p.move((int) (Game.WIDTH * .8), 0);
-            } else if (p.X() > Game.WIDTH * .8 && !p.outOfBounds) {
-                s=Game.map.screens[++Game.screenX][Game.screenY];
-                Game.p.move((int) (-Game.WIDTH * .8), 0);
-            } else if (p.Y() < 0 && !p.outOfBounds) {
-                s=Game.map.screens[Game.screenX][--Game.screenY];
-                Game.p.move(0, Game.HEIGHT);
-            } else if (p.Y() > Game.HEIGHT && !p.outOfBounds) {
-                s=Game.map.screens[Game.screenX][++Game.screenY];
-                Game.p.move(0, -Game.HEIGHT);
-            } else {
-                t = false;
-            }
-            if(t){
-                System.out.println("Player x: " + Game.p.X() + ", Player y: " + Game.p.Y());
-            }
-        }catch(ArrayIndexOutOfBoundsException aioobe) {
-            //aioobe.printStackTrace();
-        } finally {
-            p.outOfBounds = (p.X() < 0) || (p.X() > Game.WIDTH*.8) || (p.Y() < 0) || (p.Y() > Game.HEIGHT);
-            //Did the correction work?
-        }*/
     }
 
     public InfoBoxRenderer getInfoBox(){return infoBox;}

@@ -115,6 +115,11 @@ public class Game {
         renderer.setMenu(i);
     }
 
+    public static void removeEntity(Entity e) {
+        entities.remove(e);
+        renderer.remove(e);
+    }
+
     public static void addText(String text) {
         while(text.length() >= 20) {
             String temp = text.substring(0,20);

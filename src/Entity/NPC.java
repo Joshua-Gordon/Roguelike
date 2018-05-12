@@ -44,6 +44,10 @@ public class NPC extends Entity implements Statistical {
     @Override
     public void update() {
         ai.act(this);
+        if(stats.getHp().getLevel() <= 0){
+            Game.addText("The " + name + " dies.");
+            die();
+        }
     }
 
     @Override

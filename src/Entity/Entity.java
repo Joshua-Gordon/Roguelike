@@ -63,6 +63,10 @@ public abstract class Entity implements GameObject, Clickable {
         this.t = t;
     }
 
+    public void die() {
+        Game.removeEntity(this);
+    }
+
     public Render render() {
         if(Game.currentScreen.equals(sc))
             return new Render(s.getBi(),t.X(),t.Y());

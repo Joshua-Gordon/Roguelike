@@ -23,7 +23,7 @@ public class Tile implements GameObject, Clickable {
         this.x = x;
         this.y = y;
         this.blocking = b;
-        info = "A tile. Very generic, in an ad-hoc sort of way.";
+        info = "Test Message";
     }
 
     @Override
