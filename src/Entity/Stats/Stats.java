@@ -3,22 +3,23 @@ package Entity.Stats;
 public class Stats {
 
     Resource hp, power;
-    int attack, defense, speed, processing;
+    int attack, defense, speed, processing, range;
 
-    public Stats(Resource hp, Resource power, int attack, int defense, int speed, int processing) {
+    public Stats(Resource hp, Resource power, int attack, int defense, int speed, int processing, int range) {
         this.hp = hp;
         this.power = power;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
         this.processing = processing;
+        this.range = range;
     }
 
 
     public static Stats defaultStats() {
         Resource hp = new Resource(10);
         Resource power = new Resource(10);
-        return new Stats(hp,power,10,10,10,10);
+        return new Stats(hp,power,10,10,10,10,64);
     }
 
 
@@ -69,5 +70,13 @@ public class Stats {
 
     public void setProcessing(int processing) {
         this.processing = processing;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 }

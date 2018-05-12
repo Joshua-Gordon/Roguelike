@@ -80,5 +80,6 @@ public class Player extends Entity implements Statistical {
     public Stats getStats() {
         return stats;
     }
-
+    @Override
+    public String getName() { return "player";}
 }

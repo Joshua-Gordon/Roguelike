@@ -1,6 +1,8 @@
 package Entity;
 
 import Entity.AI.AI;
+import Entity.AI.ChaserAI;
+import Entity.AI.SpinAI;
 import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Screen;
@@ -19,14 +21,14 @@ public class NPC extends Entity implements Statistical {
     public NPC(String name, int x, int y, Sprite s, Screen sc) {
         super(x,y,s,sc);
         this.name = name;
-        this.ai = new AI();
+        this.ai = new ChaserAI();
         this.stats = Stats.defaultStats();
     }
 
     public NPC(String name, int x, int y, Sprite s, Screen sc, Stats st) {
         super(x,y,s,sc);
         this.name = name;
-        this.ai = new AI();
+        this.ai = new SpinAI();
         this.stats = st;
     }
 
@@ -36,6 +38,7 @@ public class NPC extends Entity implements Statistical {
             System.out.println(Game.distanceToPlayer(this));
             if (Game.distanceToPlayer(this) <= 96) { //3 tiles
                 Game.p.attack(this);
+                Game.getRenderer().update();
                 Game.addText("Ow! My HP is: " + stats.getHp().getLevel());
             }
         };
@@ -53,5 +56,10 @@ public class NPC extends Entity implements Statistical {
     @Override
     public Stats getStats() {
         return stats;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -139,10 +139,10 @@ public class Game {
     }
 
     public static double distanceToPlayer(Entity e) {
-        System.out.println("Player x: " + p.X());
+        /*System.out.println("Player x: " + p.X());
         System.out.println("Player y: " + p.Y());
         System.out.println("Bobert x: " + e.X());
-        System.out.println("Bobert y: " + e.Y());
+        System.out.println("Bobert y: " + e.Y());*/
 
         return Math.sqrt(Math.pow(p.X()-e.X(),2) + Math.pow(p.Y() - e.Y(),2));
     }
