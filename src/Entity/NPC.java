@@ -36,7 +36,7 @@ public class NPC extends Entity implements Statistical {
     public Consumer<Integer> onClick() {
         return e-> {
             System.out.println(Game.distanceToPlayer(this));
-            if (Game.distanceToPlayer(this) <= 96) { //3 tiles
+            if (Game.distanceToPlayer(this) <= 96 && sc.equals(Game.currentScreen)) { //3 tiles
                 Game.p.attack(this);
                 Game.getRenderer().update();
                 Game.addText("Ow! My HP is: " + stats.getHp().getLevel());

@@ -31,6 +31,7 @@ public class Game {
     //0 for normal
     //1 for paused
     //2 for inventory
+    //3 for equipment
 
     public static Player p;
     private static Gameplay gp;
@@ -118,6 +119,7 @@ public class Game {
     public static void removeEntity(Entity e) {
         entities.remove(e);
         renderer.remove(e);
+        Window.mouse.clickables.remove(e);
     }
 
     public static void addText(String text) {

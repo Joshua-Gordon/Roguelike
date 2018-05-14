@@ -42,19 +42,20 @@ public class Inventory extends Menu { //Singleton
             }
         }
 
-        super.renderFunction = render;
+        super.renderFunction = renderInv;
         clickables = new LinkedList<>();
         init(clickables);
     }
 
-    static Consumer<BufferedImage> render = bi->{
+    static Consumer<BufferedImage> renderInv = bi->{
         Graphics g = bi.getGraphics();
         g.setColor(Color.BLUE);
         g.fillRect(0,0,100,80);
         g.fillRect(120,0,100,80);
+        g.fillRect(240,0,100,80);
         g.setColor(Color.BLACK);
-        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,16));
-        g.drawString("Exit",0,80); //TODO: Make this work
+        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));
+        g.drawString("Exit",0,80);
         g.drawString("Use Item",120,80);
         for(int y = 0; y < numRows; ++y) {
             for (int x = 0; x < numCols; ++x) {
@@ -66,20 +67,6 @@ public class Inventory extends Menu { //Singleton
             Render r = i.render();
             g.drawImage(r.image,r.x,r.y,null);
         }
-        /*int i = 0;
-        for(int y = 0; y < numRows; ++y) {
-            for(int x = 0; x < numCols; ++x) {
-
-                int xCoord = (int)(Game.WIDTH*.1)+x*48;
-                int yCoord = (int)(Game.HEIGHT*.1)+y*48;
-
-                if(i < items.size()) {
-                    g.drawImage(items.get(i).render().image, xCoord + 8, yCoord + 8, null);
-                    items.get(i++).setPosition(xCoord + 8, yCoord + 8);
-                }
-
-            }
-        }*/
 
         g.drawImage(Game.getRenderer().getInfoBox().render(bi),0,0,null);
     };

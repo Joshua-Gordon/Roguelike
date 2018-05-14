@@ -11,7 +11,11 @@ public class TilesStatic {
 
     public static Tile loadTile(String name, int x, int y) {
         boolean blocking = name.equals("wall");
-        return new Tile(Sprite.loadSprite("res//"+name+".png"),x*32,y*32,blocking);
+        Tile t = new Tile(Sprite.loadSprite("res//"+name+".png"),x*32,y*32,blocking);
+        if(name.equals("water")) {
+            t.setInfo("water");
+        }
+        return t;
     }
 
     public static Tile loadTileExplicitLocation(String name, int x, int y) {

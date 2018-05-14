@@ -24,6 +24,9 @@ public class Map {
 
         Screen[][] parsed = new Screen[numScreensX][numScreensY];
 
+        int count = 0;
+        int total = numScreensX*numScreensY;
+
         for(int xScreen = 0; xScreen < numScreensX; ++xScreen) {
             for(int yScreen = 0; yScreen < numScreensY; ++yScreen) {
 
@@ -64,8 +67,8 @@ public class Map {
                 }
 
                 parsed[xScreen][yScreen] = new Screen(tiles);
-
-                System.out.println("Screen finished");
+                count++;
+                System.out.println("Screen finished. " + 100*((double)count)/((double)total) + "% done.");
             }
         }
 

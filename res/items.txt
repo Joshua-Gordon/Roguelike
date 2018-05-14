@@ -23,3 +23,10 @@ material
 :desc A small chip for performing computation.
 :weight 0.025
 :sprite microproc
+equipment
+:name steel helmet
+:desc A sturdy helmet made of steel.
+:weight 7.5
+:sprite helm
+:type HEAD
+:stats 0 3 0 0

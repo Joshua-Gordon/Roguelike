@@ -25,19 +25,32 @@ public class ItemLoader {
 
     private static Item loadItem(LinkedList<String> text) {
         String itemtype = text.pop();
+        String name, desc;
+        double weight;
+        Sprite sprite;
         switch(itemtype) {
             case "material":
-                String name = text.pop().substring(6);
-                String desc = text.pop().substring(6);
-                double weight = Double.parseDouble(text.pop().substring(8));
-                Sprite sprite = Sprite.loadSprite("res//"+text.pop().substring(8)+".png");
+                name = text.pop().substring(6);
+                desc = text.pop().substring(6);
+                weight = Double.parseDouble(text.pop().substring(8));
+                sprite = Sprite.loadSprite("res//"+text.pop().substring(8)+".png");
                 return new Material(name,desc,weight,sprite);
             case "weapon":
                 //not implemented
                 break;
             case "equipment":
-                //not implemented
-                break;
+                name = text.pop().substring(6);
+                desc = text.pop().substring(6);
+                weight = Double.parseDouble(text.pop().substring(8));
+                sprite = Sprite.loadSprite("res//"+text.pop().substring(8)+".png");
+                Equipment.BodyPart type = Equipment.BodyPart.valueOf(text.pop().substring(6));
+                String stat = text.pop().substring(7);
+                String[] stats = stat.split(" ");
+                int attack = Integer.parseInt(stats[0]);
+                int defense = Integer.parseInt(stats[1]);
+                int speed = Integer.parseInt(stats[2]);
+                int processing = Integer.parseInt(stats[3]);
+                return new Equipment(name,desc,weight,sprite,type,attack,defense,speed,processing);
             case "consumable":
                 //not implemented
                 break;
