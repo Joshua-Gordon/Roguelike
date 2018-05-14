@@ -2,6 +2,7 @@ package Menu;
 
 import Control.Button;
 import Control.Clickable;
+import Entity.Item.Equipment;
 import Entity.Item.Item;
 import Environment.Tile;
 import Environment.TilesStatic;
@@ -49,14 +50,17 @@ public class Inventory extends Menu { //Singleton
 
     static Consumer<BufferedImage> renderInv = bi->{
         Graphics g = bi.getGraphics();
+        g.setColor(Color.WHITE);
+        g.clearRect(0,0,Game.WIDTH,80);
         g.setColor(Color.BLUE);
         g.fillRect(0,0,100,80);
         g.fillRect(120,0,100,80);
         g.fillRect(240,0,100,80);
         g.setColor(Color.BLACK);
-        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));
+        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,36));
         g.drawString("Exit",0,80);
         g.drawString("Use Item",120,80);
+        g.drawString("Equipment",240,80);
         for(int y = 0; y < numRows; ++y) {
             for (int x = 0; x < numCols; ++x) {
                 Render box = boxes[x][y].render();
@@ -81,11 +85,13 @@ public class Inventory extends Menu { //Singleton
 
     public static void removeItem(Item i) {
         items.remove(i);
+        clickables.remove(i);
     }
 
     static void init(LinkedList<Clickable> c) {
         c.add(new Button("Exit",0,0,100,80,e->Game.normal()));
         c.add(new Button("Use Item",120,0,100,80,e->usingItem=true));
+        c.add(new Button("Equip",240,0,100,80,e->Game.equip()));
     }
 
     public static boolean isUsingItem(){
@@ -93,6 +99,13 @@ public class Inventory extends Menu { //Singleton
     }
 
     public static void stopUsingItem() {usingItem = false;}
+
+    public static void equipItem(Equipment e) {
+        removeItem(e);
+        Equipment old = EquipMenu.insert(e);
+        if(old != null)
+            addItem(old);
+    }
 
     @Override
     public LinkedList<Clickable> clickables() {

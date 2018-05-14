@@ -10,6 +10,7 @@ import Environment.Screen;
 import Graphics.InfoBoxRenderer;
 import Graphics.Renderer;
 import Graphics.Window;
+import Menu.EquipMenu;
 import Menu.Gameplay;
 import Menu.Inventory;
 import Menu.Pause;
@@ -36,6 +37,7 @@ public class Game {
     public static Player p;
     private static Gameplay gp;
     private static Inventory i;
+    private static EquipMenu em;
 
     public static Screen currentScreen;
     public static Map map;
@@ -62,6 +64,7 @@ public class Game {
         p = new Player();
 
         i = new Inventory(50);
+        em = new EquipMenu();
 
         renderer.insert(p);
         entities.add(p);
@@ -74,9 +77,6 @@ public class Game {
         renderer.setScreen(s);
         gp = new Gameplay();
         renderer.setMenu(gp);
-
-
-
 
     }
 
@@ -114,6 +114,11 @@ public class Game {
     public static void inventory() {
         Inventory.items.forEach(i->i.setScreen(currentScreen));
         renderer.setMenu(i);
+    }
+
+    public static void equip() {
+        renderer.setMenu(em);
+        STATE = 3;
     }
 
     public static void removeEntity(Entity e) {

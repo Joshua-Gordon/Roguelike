@@ -1,6 +1,8 @@
 package Entity.Item;
 
 import Environment.Screen;
+import Menu.EquipMenu;
+import Menu.Inventory;
 import Sprites.Sprite;
 import Test.Game;
 
@@ -34,7 +36,12 @@ public class Equipment extends Item {
     @Override
     public Consumer<Integer> onClick(){
         return r->{
-          //TODO: Make this equip/dequip things
+            Game.addText(name);
+            Game.addText(description);
+            if(Game.STATE == 2)
+                Inventory.equipItem(this);
+            if(Game.STATE == 3)
+                EquipMenu.dequip(this);
         };
     }
 
