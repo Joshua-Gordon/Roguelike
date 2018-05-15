@@ -100,20 +100,20 @@ public class Game {
         }
     }
 
-
+    public static void normal() {
+        renderer.setMenu(gp);
+        STATE = 0;
+    }
 
     public static void pause() {
         renderer.setMenu(new Pause());
         STATE = 1;
     }
 
-    public static void normal() {
-        renderer.setMenu(gp);
-    }
-
     public static void inventory() {
         Inventory.items.forEach(i->i.setScreen(currentScreen));
         renderer.setMenu(i);
+        STATE = 2;
     }
 
     public static void equip() {

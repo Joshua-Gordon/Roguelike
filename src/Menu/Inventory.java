@@ -12,6 +12,7 @@ import Test.Game;
 import java.awt.*;
 
 import java.awt.image.BufferedImage;
+import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 

@@ -90,8 +90,8 @@ public class EquipMenu extends Menu { //Singleton
     }
 
     public static void dequip(Equipment e) {
-        slots.remove(e);
-        equipment.remove(e);
+        //slots.remove(e);
+        equipment.values().remove(e);
         Inventory.addItem(e);
     }
 }
