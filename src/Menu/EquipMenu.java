@@ -12,9 +12,7 @@ import Test.Game;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.EnumMap;
-import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Set;
 import java.util.function.Consumer;
 
 public class EquipMenu extends Menu { //Singleton
@@ -86,6 +84,7 @@ public class EquipMenu extends Menu { //Singleton
     public static Equipment insert(Equipment e) {
         Equipment old = equipment.put(e.getType(),e);
         e.moveTo(slots.get(e.getType()));
+        Game.p.getStats().addEquipmentStats(e);
         return old;
     }
 
@@ -93,5 +92,6 @@ public class EquipMenu extends Menu { //Singleton
         //slots.remove(e);
         equipment.values().remove(e);
         Inventory.addItem(e);
+        Game.p.getStats().removeEquipmentStats(e);
     }
 }

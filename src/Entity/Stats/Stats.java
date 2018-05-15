@@ -1,5 +1,7 @@
 package Entity.Stats;
 
+import Entity.Item.Equipment;
+
 public class Stats {
 
     Resource hp, power;
@@ -22,7 +24,19 @@ public class Stats {
         return new Stats(hp,power,10,10,10,10,64);
     }
 
+    public void addEquipmentStats(Equipment e) {
+        this.attack += e.getAttack();
+        this.defense += e.getDefense();
+        this.speed += e.getSpeed();
+        this.processing += e.getProcessing();
+    }
 
+    public void removeEquipmentStats(Equipment e) {
+        this.attack -= e.getAttack();
+        this.defense -= e.getDefense();
+        this.speed -= e.getSpeed();
+        this.processing -= e.getProcessing();
+    }
 
     public Resource getHp() {
         return hp;
