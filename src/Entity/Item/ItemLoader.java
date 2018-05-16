@@ -28,13 +28,15 @@ public class ItemLoader {
         String name, desc;
         double weight;
         Sprite sprite;
+        int amount;
         switch(itemtype) {
             case "material":
                 name = text.pop().substring(6);
                 desc = text.pop().substring(6);
                 weight = Double.parseDouble(text.pop().substring(8));
                 sprite = Sprite.loadSprite("res//"+text.pop().substring(8)+".png");
-                return new Material(name,desc,weight,sprite);
+                amount = Integer.parseInt(text.pop().substring(8));
+                return new Material(name,desc,weight,sprite,amount);
             case "weapon":
                 //not implemented
                 break;
@@ -50,7 +52,8 @@ public class ItemLoader {
                 int defense = Integer.parseInt(stats[1]);
                 int speed = Integer.parseInt(stats[2]);
                 int processing = Integer.parseInt(stats[3]);
-                return new Equipment(name,desc,weight,sprite,type,attack,defense,speed,processing);
+                amount = Integer.parseInt(text.pop().substring(8));
+                return new Equipment(name,desc,weight,sprite,amount,type,attack,defense,speed,processing);
             case "consumable":
                 //not implemented
                 break;

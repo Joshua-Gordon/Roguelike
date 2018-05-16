@@ -6,6 +6,7 @@ import Entity.AI.SpinAI;
 import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Screen;
+import Environment.Tile;
 import Sprites.Sprite;
 import Test.Game;
 
@@ -36,7 +37,7 @@ public class NPC extends Entity implements Statistical {
     public Consumer<Integer> onClick() {
         return e-> {
             System.out.println(Game.distanceToPlayer(this));
-            if (Game.distanceToPlayer(this) <= 96 && sc.equals(Game.currentScreen)) { //3 tiles
+            if (/*Game.distanceToPlayer(this) <= Game.p.getStats().getRange() && */sc.equals(Game.currentScreen)) { //3 tiles
                 Game.p.attack(this);
                 Game.getRenderer().update();
                 Game.addText("Ow! My HP is: " + stats.getHp().getLevel());
@@ -61,5 +62,10 @@ public class NPC extends Entity implements Statistical {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Tile getTile() {
+        return super.t;
     }
 }

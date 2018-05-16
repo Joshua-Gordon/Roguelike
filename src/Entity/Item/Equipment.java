@@ -19,12 +19,13 @@ public class Equipment extends Item {
     BodyPart type;
 
 
-    public Equipment(String name, String description, double weight, Sprite sprite, BodyPart type, int attack, int defense, int speed, int processing) {
+    public Equipment(String name, String description, double weight, Sprite sprite, int amount, BodyPart type, int attack, int defense, int speed, int processing) {
         super(0,0,sprite, Game.currentScreen);
         super.name = name;
         super.description = description;
         super.weight = weight;
         super.sprite = sprite;
+        super.amount = amount;
         this.type = type;
         this.attack = attack;
         this.defense = defense;

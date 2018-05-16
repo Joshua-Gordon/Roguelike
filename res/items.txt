@@ -3,26 +3,31 @@ material
 :desc It's a rock
 :weight 3.6
 :sprite rock
+:amount 2
 material
 :name Coin
 :desc A gold coin. Standard currency.
 :weight 0.025
 :sprite coin
+:amount 30
 material
 :name Fairy Dust
 :desc Fairy residue. Best not ask where it came from.
 :weight 0.05
 :sprite fairyDust
+:amount 4
 material
 :name Feathers
 :desc Feathers from some bird. Light and soft.
 :weight 0.1
 :sprite feathers
+:amount 3
 material
 :name Microprocessor
 :desc A small chip for performing computation.
 :weight 0.025
 :sprite microproc
+:amount 1
 equipment
 :name steel helmet
 :desc A sturdy helmet made of steel.
@@ -30,3 +35,4 @@ equipment
 :sprite helm
 :type HEAD
 :stats 0 3 0 0
+:amount 1

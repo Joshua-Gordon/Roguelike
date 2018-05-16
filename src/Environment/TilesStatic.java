@@ -22,4 +22,8 @@ public class TilesStatic {
         boolean blocking = name.equals("wall");
         return new Tile(Sprite.loadSprite("res//"+name+".png"),x,y,blocking);
     }
+
+    public static int distance(Tile t1, Tile t2) {
+        return (int)Math.round(Math.sqrt((t1.x-t2.x)*(t1.x-t2.x) + ((t1.y-t2.y)*(t1.y-t2.y))));
+    }
 }

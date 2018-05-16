@@ -16,6 +16,7 @@ public abstract class Item extends Entity{
     String name, description;
     double weight;
     Sprite sprite;
+    int amount;
 
     public Item(int x, int y, Sprite s, Screen sc) {
         super(x, y, s, sc);
@@ -44,5 +45,17 @@ public abstract class Item extends Entity{
 
     public void setPosition(int x, int y) {
 
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int val) {
+        amount = val;
+    }
+
+    public void changeAmount(int val) {
+        amount += val;
     }
 }
