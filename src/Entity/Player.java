@@ -3,7 +3,7 @@ package Entity;
 import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Tile;
-import Graphics.Render;
+import Menu.Inventory;
 import Sprites.Sprite;
 import Test.Game;
 
@@ -15,10 +15,13 @@ public class Player extends Entity implements Statistical {
     public boolean outOfBounds;
     Stats stats;
 
+    public Inventory inv;
+
     public Player() {
         super(5,5,Sprite.loadSprite("res//bird.jpg"),Game.currentScreen);
         outOfBounds = false;
         stats = Stats.defaultStats();
+        inv = new Inventory(50);
     }
 
     public Sprite getSprite(){

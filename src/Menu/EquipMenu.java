@@ -91,7 +91,7 @@ public class EquipMenu extends Menu { //Singleton
     public static void dequip(Equipment e) {
         //slots.remove(e);
         equipment.values().remove(e);
-        Inventory.addItem(e);
+        Game.p.inv.addItem(e);
         Game.p.getStats().removeEquipmentStats(e);
     }
 }

@@ -16,16 +16,16 @@ import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 
-public class Inventory extends Menu { //Singleton
+public class Inventory extends Menu {
 
-    public static LinkedList<Item> items;
-    static double carryCapacity;
-    static boolean usingItem;
-    static int numRows, numCols;
+    public LinkedList<Item> items;
+    double carryCapacity;
+    boolean usingItem;
+    int numRows, numCols;
 
-    static Tile[][] boxes;
+    Tile[][] boxes;
 
-    static LinkedList<Clickable> clickables;
+    LinkedList<Clickable> clickables;
 
     public Inventory(double carryCapacity) {
         super();
@@ -49,7 +49,7 @@ public class Inventory extends Menu { //Singleton
         init(clickables);
     }
 
-    static Consumer<BufferedImage> renderInv = bi->{
+    Consumer<BufferedImage> renderInv = bi->{
         Graphics g = bi.getGraphics();
         g.setColor(Color.WHITE);
         g.clearRect(0,0,Game.WIDTH,80);
@@ -76,7 +76,7 @@ public class Inventory extends Menu { //Singleton
         g.drawImage(Game.getRenderer().getInfoBox().render(bi),0,0,null);
     };
 
-    public static void addItem(Item i) {
+    public void addItem(Item i) {
 
         Tile nextBox = boxes[items.size()%numCols][items.size()/numRows];
         items.add(i);
@@ -84,24 +84,24 @@ public class Inventory extends Menu { //Singleton
         i.moveTo(nextBox);
     }
 
-    public static void removeItem(Item i) {
+    public void removeItem(Item i) {
         items.remove(i);
         clickables.remove(i);
     }
 
-    static void init(LinkedList<Clickable> c) {
+    void init(LinkedList<Clickable> c) {
         c.add(new Button("Exit",0,0,100,80,e->Game.normal()));
         c.add(new Button("Use Item",120,0,100,80,e->usingItem=true));
         c.add(new Button("Equip",240,0,100,80,e->Game.equip()));
     }
 
-    public static boolean isUsingItem(){
+    public boolean isUsingItem(){
         return usingItem;
     }
 
-    public static void stopUsingItem() {usingItem = false;}
+    public void stopUsingItem() {usingItem = false;}
 
-    public static void equipItem(Equipment e) {
+    public void equipItem(Equipment e) {
         removeItem(e);
         Equipment old = EquipMenu.insert(e);
         if(old != null)

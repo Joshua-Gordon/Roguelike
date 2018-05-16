@@ -63,7 +63,6 @@ public class Game {
 
         p = new Player();
 
-        i = new Inventory(50);
         em = new EquipMenu();
 
         renderer.insert(p);
@@ -84,7 +83,7 @@ public class Game {
 
         try {
             LinkedList<Item> items = ItemLoader.loadItems("res//items.txt");
-            items.forEach(Inventory::addItem);
+            items.forEach(p.inv::addItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,8 +110,8 @@ public class Game {
     }
 
     public static void inventory() {
-        Inventory.items.forEach(i->i.setScreen(currentScreen));
-        renderer.setMenu(i);
+        p.inv.items.forEach(i->i.setScreen(currentScreen));
+        renderer.setMenu(p.inv);
         STATE = 2;
     }
 

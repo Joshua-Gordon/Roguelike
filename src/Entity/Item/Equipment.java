@@ -40,7 +40,7 @@ public class Equipment extends Item {
             Game.addText(name);
             Game.addText(description);
             if(Game.STATE == 2)
-                Inventory.equipItem(this);
+                Game.p.inv.equipItem(this);
             if(Game.STATE == 3)
                 EquipMenu.dequip(this);
         };

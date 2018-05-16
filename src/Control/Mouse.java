@@ -31,7 +31,7 @@ public class Mouse implements MouseListener {
             if(c.clickBox().contains(e.getLocationOnScreen())) {
                 if(Game.STATE == 2) {
                     System.out.println("Inventory!");
-                    if(e.getY() < 80 || Inventory.isUsingItem()) {
+                    if(e.getY() < 80 || Game.p.inv.isUsingItem()) {
                         c.onClick().accept(e.getButton());
                         //Inventory.stopUsingItem();
                     }
