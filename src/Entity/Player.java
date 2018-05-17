@@ -4,6 +4,7 @@ import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Tile;
 import Menu.Inventory;
+import Menu.EquipMenu;
 import Sprites.Sprite;
 import Test.Game;
 
@@ -16,12 +17,14 @@ public class Player extends Entity implements Statistical {
     Stats stats;
 
     public Inventory inv;
+    public EquipMenu equip;
 
     public Player() {
         super(5,5,Sprite.loadSprite("res//bird.jpg"),Game.currentScreen);
         outOfBounds = false;
         stats = Stats.defaultStats();
         inv = new Inventory(50);
+        equip = new EquipMenu();
     }
 
     public Sprite getSprite(){

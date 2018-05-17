@@ -42,7 +42,7 @@ public class Equipment extends Item {
             if(Game.STATE == 2)
                 Game.p.inv.equipItem(this);
             if(Game.STATE == 3)
-                EquipMenu.dequip(this);
+                Game.p.equip.dequip(this);
         };
     }
 

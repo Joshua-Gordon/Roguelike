@@ -103,7 +103,7 @@ public class Inventory extends Menu {
 
     public void equipItem(Equipment e) {
         removeItem(e);
-        Equipment old = EquipMenu.insert(e);
+        Equipment old = Game.p.equip.insert(e);
         if(old != null)
             addItem(old);
     }

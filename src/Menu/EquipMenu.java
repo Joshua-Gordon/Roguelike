@@ -15,13 +15,13 @@ import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 
-public class EquipMenu extends Menu { //Singleton
+public class EquipMenu extends Menu {
 
-    public static EnumMap<BodyPart,Equipment> equipment;
+    public EnumMap<BodyPart,Equipment> equipment;
 
-    private static EnumMap<BodyPart,Tile> slots;
+    private EnumMap<BodyPart,Tile> slots;
 
-    private static LinkedList<Clickable> clickables;
+    private LinkedList<Clickable> clickables;
 
     public EquipMenu() {
         super();
@@ -46,7 +46,7 @@ public class EquipMenu extends Menu { //Singleton
         slots.put(BodyPart.FOOT_R,TilesStatic.loadTileExplicitLocation("box",Game.WIDTH/2 + 50,Game.HEIGHT/8 + 180));     //footR
     }
 
-    public static Consumer<BufferedImage> renderEquipment = bi->{
+    public Consumer<BufferedImage> renderEquipment = bi->{
         Graphics g = bi.getGraphics();
         g.setColor(Color.WHITE);
         g.clearRect(0,0,Game.WIDTH,80);
@@ -81,14 +81,14 @@ public class EquipMenu extends Menu { //Singleton
         return clickables;
     }
 
-    public static Equipment insert(Equipment e) {
+    public Equipment insert(Equipment e) {
         Equipment old = equipment.put(e.getType(),e);
         e.moveTo(slots.get(e.getType()));
         Game.p.getStats().addEquipmentStats(e);
         return old;
     }
 
-    public static void dequip(Equipment e) {
+    public void dequip(Equipment e) {
         //slots.remove(e);
         equipment.values().remove(e);
         Game.p.inv.addItem(e);

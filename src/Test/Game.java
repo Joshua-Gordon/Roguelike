@@ -36,8 +36,6 @@ public class Game {
 
     public static Player p;
     private static Gameplay gp;
-    private static Inventory i;
-    private static EquipMenu em;
 
     public static Screen currentScreen;
     public static Map map;
@@ -62,8 +60,6 @@ public class Game {
 
 
         p = new Player();
-
-        em = new EquipMenu();
 
         renderer.insert(p);
         entities.add(p);
@@ -116,7 +112,7 @@ public class Game {
     }
 
     public static void equip() {
-        renderer.setMenu(em);
+        renderer.setMenu(p.equip);
         STATE = 3;
     }
 
