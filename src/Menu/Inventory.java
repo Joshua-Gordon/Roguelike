@@ -77,7 +77,6 @@ public class Inventory extends Menu {
     };
 
     public void addItem(Item i) {
-
         Tile nextBox = boxes[items.size()%numCols][items.size()/numRows];
         items.add(i);
         clickables.add(i);

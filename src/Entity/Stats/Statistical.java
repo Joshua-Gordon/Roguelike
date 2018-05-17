@@ -3,6 +3,7 @@ package Entity.Stats;
 import Entity.Item.Weapon;
 import Environment.Tile;
 import Environment.TilesStatic;
+import Menu.EquipMenu;
 import Test.Game;
 
 import java.util.Random;
@@ -14,7 +15,11 @@ public interface Statistical {
     default void attack(Statistical enemy){
         Stats s = getStats();
 
-        Weapon w = getWeapon();
+        EquipMenu em = getEquipment();
+        Weapon w = Weapon.unarmed();
+        if(em != null){
+            //TODO: Get the stuff
+        }
         if(!(s.getRange()+w.getRange() >= TilesStatic.distance(getTile(),enemy.getTile()))){
             return;
         }
@@ -30,5 +35,7 @@ public interface Statistical {
     default Weapon getWeapon(){
         return Weapon.unarmed();
     }
+
+    EquipMenu getEquipment();
 
 }

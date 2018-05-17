@@ -36,3 +36,30 @@ equipment
 :type HEAD
 :stats 0 3 0 0
 :amount 1
+weapon
+:name sword
+:desc A sword. Real sharp, that one.
+:weight 3
+:sprite sword
+:twoHand no
+:mean 10
+:stddev 2
+:amount 1
+weapon
+:name sword
+:desc A sword. Real sharp, that one.
+:weight 3
+:sprite sword
+:twoHand no
+:mean 10
+:stddev 2
+:amount 1
+weapon
+:name lightsaber
+:desc Stolen by means of high ground
+:weight 1
+:sprite lightsaber
+:twoHand yes
+:mean 15
+:stddev 6
+:amount 1

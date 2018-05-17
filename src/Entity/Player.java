@@ -93,4 +93,9 @@ public class Player extends Entity implements Statistical {
     public Tile getTile() {
         return t;
     }
+
+    @Override
+    public EquipMenu getEquipment() {
+        return equip;
+    }
 }

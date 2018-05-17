@@ -5,6 +5,7 @@ import Sprites.Sprite;
 import Test.Game;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Weapon extends Item {
 
@@ -39,8 +40,32 @@ public class Weapon extends Item {
                 2);
     }
 
+    public boolean isUnarmed() {
+        return name.equals("Unarmed");
+    }
+
     public int getRange() {
         return 64;
     }
 
+    public boolean isTwoHanded() {
+        return twoHanded;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public Consumer<Integer> onClick(){
+        return r->{
+            Game.addText(name);
+            Game.addText(description);
+            if(Game.STATE == 2)
+                Game.p.inv.removeItem(this);
+                Game.p.equip.equipWeapon(this);
+            if(Game.STATE == 3)
+                Game.p.equip.dequipWeapon();
+        };
+    }
 }

@@ -38,8 +38,15 @@ public class ItemLoader {
                 amount = Integer.parseInt(text.pop().substring(8));
                 return new Material(name,desc,weight,sprite,amount);
             case "weapon":
-                //not implemented
-                break;
+                name = text.pop().substring(6);
+                desc = text.pop().substring(6);
+                weight = Double.parseDouble(text.pop().substring(8));
+                sprite = Sprite.loadSprite("res//"+text.pop().substring(8)+".png");
+                boolean twoHands = text.pop().substring(9).equals("yes");
+                int mean = Integer.parseInt(text.pop().substring(6));
+                int stddev = Integer.parseInt(text.pop().substring(8));
+                amount = Integer.parseInt(text.pop().substring(8));
+                return new Weapon(name, desc, weight, sprite, amount, twoHands, mean, stddev);
             case "equipment":
                 name = text.pop().substring(6);
                 desc = text.pop().substring(6);

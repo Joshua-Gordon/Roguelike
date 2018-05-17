@@ -4,6 +4,7 @@ import Control.Button;
 import Control.Clickable;
 import Entity.Item.Equipment;
 import Entity.Item.Equipment.BodyPart;
+import Entity.Item.Weapon;
 import Environment.Tile;
 import Environment.TilesStatic;
 import Graphics.Render;
@@ -11,6 +12,7 @@ import Test.Game;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.function.Consumer;
@@ -23,9 +25,12 @@ public class EquipMenu extends Menu {
 
     private LinkedList<Clickable> clickables;
 
+    private Weapon w;
+
     public EquipMenu() {
         super();
         equipment = new EnumMap<>(BodyPart.class);
+        w = Weapon.unarmed();
         clickables = new LinkedList<>();
         super.state = 3;
         super.renderFunction = renderEquipment;
@@ -89,9 +94,23 @@ public class EquipMenu extends Menu {
     }
 
     public void dequip(Equipment e) {
-        //slots.remove(e);
         equipment.values().remove(e);
         Game.p.inv.addItem(e);
         Game.p.getStats().removeEquipmentStats(e);
+    }
+
+    public void equipWeapon(Weapon wNew) {
+        dequipWeapon();
+        w = wNew;
+        System.out.println("Equipped the " + w.getName());
+    }
+
+
+    public void dequipWeapon() {
+        if(!w.isUnarmed()){
+            Game.p.inv.addItem(w);
+            System.out.println("Dequipped the " + w.getName());
+            w = Weapon.unarmed();
+        }
     }
 }

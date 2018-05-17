@@ -7,6 +7,7 @@ import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Screen;
 import Environment.Tile;
+import Menu.EquipMenu;
 import Sprites.Sprite;
 import Test.Game;
 
@@ -67,5 +68,10 @@ public class NPC extends Entity implements Statistical {
     @Override
     public Tile getTile() {
         return super.t;
+    }
+
+    @Override
+    public EquipMenu getEquipment() {
+        return null; //No equipment. Yet.
     }
 }
