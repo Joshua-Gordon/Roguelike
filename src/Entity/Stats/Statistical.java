@@ -18,7 +18,7 @@ public interface Statistical {
         EquipMenu em = getEquipment();
         Weapon w = Weapon.unarmed();
         if(em != null){
-            //TODO: Get the stuff
+            w = em.getWeapon();
         }
         if(!(s.getRange()+w.getRange() >= TilesStatic.distance(getTile(),enemy.getTile()))){
             return;

@@ -26,6 +26,7 @@ public class EquipMenu extends Menu {
     private LinkedList<Clickable> clickables;
 
     private Weapon w;
+    private Tile weaponSlot;
 
     public EquipMenu() {
         super();
@@ -49,6 +50,8 @@ public class EquipMenu extends Menu {
         slots.put(BodyPart.LEG_R,TilesStatic.loadTileExplicitLocation("box",Game.WIDTH/2 + 40,Game.HEIGHT/8 + 140));     //legR
         slots.put(BodyPart.FOOT_L,TilesStatic.loadTileExplicitLocation("box",Game.WIDTH/2 - 50,Game.HEIGHT/8 + 180));     //footL
         slots.put(BodyPart.FOOT_R,TilesStatic.loadTileExplicitLocation("box",Game.WIDTH/2 + 50,Game.HEIGHT/8 + 180));     //footR
+
+        weaponSlot = TilesStatic.loadTileExplicitLocation("box",Game.WIDTH/2 + 100,Game.HEIGHT/8 + 180);
     }
 
     public Consumer<BufferedImage> renderEquipment = bi->{
@@ -69,13 +72,17 @@ public class EquipMenu extends Menu {
         for(Tile t : slots.values()) {
             Render r = t.render();
             g.drawImage(r.image,r.x,r.y,null);
-
         }
+        Render r = weaponSlot.render();
+        g.drawImage(r.image,r.x,r.y,null);
         //Draw equipment
         for(Equipment e : equipment.values()) {
-            Render r = e.render();
+            r = e.render();
             g.drawImage(r.image,r.x,r.y,null);
         }
+        //Draw weapon
+        r = w.render();
+        g.drawImage(r.image,r.x,r.y,null);
     };
 
     @Override
@@ -84,6 +91,10 @@ public class EquipMenu extends Menu {
         clickables.add(new Button("Exit",0,0,100,80,e->Game.normal()));
         clickables.add(new Button("Inventory",120,0,100,80,e->Game.inventory()));
         return clickables;
+    }
+
+    public Weapon getWeapon() {
+        return w;
     }
 
     public Equipment insert(Equipment e) {
@@ -100,8 +111,12 @@ public class EquipMenu extends Menu {
     }
 
     public void equipWeapon(Weapon wNew) {
+        if(w.equals(wNew)){
+            return;
+        }
         dequipWeapon();
         w = wNew;
+        w.moveTo(weaponSlot);
         System.out.println("Equipped the " + w.getName());
     }
 

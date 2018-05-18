@@ -61,7 +61,7 @@ public class Map {
                                 tiles[x][y] = TilesStatic.loadTile("wall",x,y);
                                 break;
                             default:
-                                //System.err.println("Unrecognized pixel: " + pixel);
+                                System.err.println("Unrecognized pixel: " + pixel);
                         }
                     }
                 }

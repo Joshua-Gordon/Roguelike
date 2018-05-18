@@ -54,7 +54,7 @@ public class Game {
         entities = new LinkedList<>();
 
 
-        map = Map.parseMap(Sprite.loadSprite("res//map1.png").getBi());
+        map = Map.parseMap(Sprite.loadSprite("res//map0.png").getBi());
         Screen s = map.screens[0][0];
         currentScreen = s;
 
