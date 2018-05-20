@@ -1,5 +1,7 @@
 package Entity.Stats;
 
+import Entity.Item.Item;
+import Entity.Item.RangedWeapon;
 import Entity.Item.Weapon;
 import Environment.Tile;
 import Environment.TilesStatic;
@@ -12,7 +14,7 @@ public interface Statistical {
     Stats getStats();
     String getName();
     Tile getTile();
-    default void attack(Statistical enemy){
+    default public void attack(Statistical enemy){
         Stats s = getStats();
 
         EquipMenu em = getEquipment();
@@ -31,9 +33,6 @@ public interface Statistical {
 
         Game.addText("The " + getName() + " attacks the " + enemy.getName() + " for " + damage + " damage!");
         e.hp.change(-damage);
-    }
-    default Weapon getWeapon(){
-        return Weapon.unarmed();
     }
 
     EquipMenu getEquipment();

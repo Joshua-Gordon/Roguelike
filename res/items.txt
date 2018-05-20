@@ -63,3 +63,14 @@ weapon
 :mean 15
 :stddev 6
 :amount 1
+weapon
+:name rockThrower
+:desc Tool for throwing rocks
+:weight 1.25
+:sprite rockThrower
+:twoHand no
+:mean 7
+:stddev 2
+:amount 1
+:range 256
+:ammo Rock

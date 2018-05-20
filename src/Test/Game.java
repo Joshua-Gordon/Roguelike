@@ -65,6 +65,8 @@ public class Game {
         entities.add(p);
 
         NPC bobert = new NPC("bobert", 12, 14, Sprite.loadSprite("res//bobert.png"),currentScreen);
+        bobert.getStats().getHp().setMax(50);
+        bobert.getStats().getHp().change(40);
         renderer.insert(bobert);
         entities.add(bobert);
 

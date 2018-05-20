@@ -46,6 +46,11 @@ public class ItemLoader {
                 int mean = Integer.parseInt(text.pop().substring(6));
                 int stddev = Integer.parseInt(text.pop().substring(8));
                 amount = Integer.parseInt(text.pop().substring(8));
+                if(text.peek().startsWith(":range")){
+                    int range = Integer.parseInt(text.pop().substring(7));
+                    String ammo = text.pop().substring(6);
+                    return new RangedWeapon(name,desc,weight,sprite,amount,twoHands,mean,stddev,range,ammo);
+                }
                 return new Weapon(name, desc, weight, sprite, amount, twoHands, mean, stddev);
             case "equipment":
                 name = text.pop().substring(6);

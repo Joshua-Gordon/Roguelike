@@ -1,15 +1,20 @@
 package Entity;
 
+import Entity.Item.RangedWeapon;
+import Entity.Item.Weapon;
 import Entity.Stats.Statistical;
 import Entity.Stats.Stats;
 import Environment.Tile;
+import Environment.TilesStatic;
 import Menu.Inventory;
 import Menu.EquipMenu;
 import Sprites.Sprite;
 import Test.Game;
 
 import java.awt.*;
+import java.util.Random;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class Player extends Entity implements Statistical {
 
@@ -97,5 +102,45 @@ public class Player extends Entity implements Statistical {
     @Override
     public EquipMenu getEquipment() {
         return equip;
+    }
+
+    @Override
+    public void attack(Statistical enemy){
+        Stats s = getStats();
+
+        EquipMenu em = getEquipment();
+        Weapon w = Weapon.unarmed();
+        if(em != null){
+            w = em.getWeapon();
+        }
+        if(!(s.getRange()+w.getRange() >= TilesStatic.distance(getTile(),enemy.getTile()))){
+            return;
+        }
+        if(w instanceof RangedWeapon){
+            String ammo = ((RangedWeapon) w).getAmmo();
+            int idx = -1;
+            for(int i = 0; i < inv.items.size(); ++i) {
+                if(inv.items.get(i).getName().equals(ammo)){
+                    idx = i;
+                }
+            }
+            if(idx == -1) {
+                Game.addText("Out of ammo!");
+                return;
+            } else {
+                inv.items.get(idx).changeAmount(-1);
+                if(inv.items.get(idx).getAmount() <= 0) {
+                    inv.removeItem(inv.items.get(idx));
+                }
+            }
+        }
+
+        Stats e = enemy.getStats();
+        int damage = s.getAttack() - (s.getAttack()/(e.getDefense()*2));
+
+        damage += w.getDamageRange().get((new Random()).nextInt(w.getDamageRange().size()));
+
+        Game.addText("The " + getName() + " attacks the " + enemy.getName() + " for " + damage + " damage!");
+        e.getHp().change(-damage);
     }
 }

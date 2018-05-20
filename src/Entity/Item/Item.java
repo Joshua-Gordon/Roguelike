@@ -47,6 +47,10 @@ public abstract class Item extends Entity{
 
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getAmount() {
         return amount;
     }
